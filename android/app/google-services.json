@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "104552786616",
+    "project_id": "royalclassassignment",
+    "storage_bucket": "royalclassassignment.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:104552786616:android:14d1b9a8b0e24e80d6224d",
+        "android_client_info": {
+          "package_name": "com.royalclass.assignment_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCY4qy_zUB3g6p_XwDw5IdIFi_G7GLXejs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
