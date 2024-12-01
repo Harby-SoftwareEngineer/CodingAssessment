@@ -14,6 +14,9 @@ abstract class CartQueryDao {
   @insert
   Future<void> insertProduct(CartQueryDto params);
 
+  @update
+  Future<void> updateProduct(CartQueryDto params);
+
   @delete
   Future<void> deleteCallLog(CartQueryDto params);
 

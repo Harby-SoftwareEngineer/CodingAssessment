@@ -1,5 +1,6 @@
 import 'package:app/core/assets/app_images.dart';
 import 'package:app/core/widgets/buttons/app_icon.dart';
+import 'package:app/src/main_index.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../../core/assets/app_icons.dart';
@@ -107,6 +108,7 @@ class FFNavigationBarItem extends StatelessWidget {
           ),
           AppIcon(
             icon: iconData,
+            padding: 10.paddingBottom,
             color: theme.selectedItemIconColor,
           )
         ],
@@ -114,6 +116,7 @@ class FFNavigationBarItem extends StatelessWidget {
     ) :
       AppIcon(
       icon: iconData,
+      padding: 5.paddingAll,
       color: theme.unselectedItemIconColor,
     );
   }
@@ -146,7 +149,7 @@ class FFNavigationBarItem extends StatelessWidget {
 
     bool isSelected = _isItemSelected();
     double itemHeight = itemWidth;
-    double topOffset = isSelected ? -40 : -5;
+    double topOffset = isSelected ? -60 : -10;
     double iconTopSpacer = isSelected ? 0 : 2;
     double shadowTopSpacer = 4;
 

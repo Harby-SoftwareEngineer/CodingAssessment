@@ -50,24 +50,29 @@ class AppScaffold extends StatelessWidget {
 
       //SafeArea to save content from the phone top par.
       body: BackgroundContainer(
-        child: ((title == null && titleWidget == null) && appBar == null) ? body : Column(
-          mainAxisAlignment: MainAxisAlignment.start,
+        child: ((title == null && titleWidget == null) && appBar == null) ? body : Stack(
+          // mainAxisAlignment: MainAxisAlignment.start,
           children: [
+            Padding(
+              padding: 120.paddingTop,
+                child: body),
             appBar ??
                 Row(
                   children: [
                     CustomBackAppBar(),
+                    16.pw,
                     Expanded(
                       child: Text(
-                        title ?? "",
-                        textAlign: TextAlign.start,
-                        style: titleStyle ??
-                            theme.appBarTheme.titleTextStyle
-                      ).paddingOnly(top: 20, end: 10),
+                          title ?? "",
+                          textAlign: TextAlign.start,
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          style: titleStyle ??
+                              theme.appBarTheme.titleTextStyle
+                      ).paddingEnd(10),
                     ),
                   ],
-                ),
-            Expanded(child: body),
+                ).paddingOnly(top: 50, start: 10),
           ],
         ),
       ),

@@ -54,11 +54,11 @@ class ImageNetwork extends StatelessWidget {
       margin: margin ?? EdgeInsets.zero,
       padding: padding ?? EdgeInsets.zero,
       decoration: BoxDecoration(
-        color: Colors.transparent,
-        borderRadius: borderRadius ?? BorderRadius.circular(radius ?? 8),
+        color: Color(0xFF455066),
+        borderRadius: borderRadius ?? BorderRadius.circular(radius ?? 18),
       ),
       child: ClipRRect(
-        borderRadius: borderRadius ?? BorderRadius.circular(radius ?? 8),
+        borderRadius: borderRadius ?? BorderRadius.circular(radius ?? 18),
         child: FadeInImage.assetNetwork(
           fit: fit ?? BoxFit.cover,
           placeholder: 'assets/images/loading.gif',

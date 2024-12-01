@@ -140,6 +140,7 @@ class ProductDetailsScreen extends BaseStatelessWidget {
                 id: data.id,
                 title: data.title,
                 price: data.price,
+                quantity: 1,
                 image: data.images?.first ?? "",
               ));
             }

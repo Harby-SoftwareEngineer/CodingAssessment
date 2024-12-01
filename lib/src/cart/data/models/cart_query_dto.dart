@@ -15,10 +15,12 @@ class CartQueryDto {
   String? title;
   @JsonKey(name: 'price')
   int? price;
+  @JsonKey(name: 'quantity', defaultValue: 1)
+  int? quantity;
   @JsonKey(name: 'image')
   String? image;
 
-  CartQueryDto({this.id, this.title, this.price, this.image});
+  CartQueryDto({this.id, this.title, this.price, this.quantity, this.image});
 
    factory CartQueryDto.fromJson(Map<String, dynamic> json) => _$CartQueryDtoFromJson(json);
 

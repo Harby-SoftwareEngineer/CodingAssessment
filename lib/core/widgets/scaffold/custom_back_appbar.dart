@@ -7,8 +7,8 @@ class CustomBackAppBar extends BaseStatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppIconButton(
-      icon: AppImages.back,
-      size: 120,
+      icon: AppIcons.back,
+      // size: 130,
       onPressed: () {
         Navigator.of(context).pop();
       },

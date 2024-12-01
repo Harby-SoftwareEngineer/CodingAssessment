@@ -23,7 +23,7 @@ class CartRepoImp extends CartRepo{
 
   @override
   Future<List<CartQuery>> fetchCartProducts() async {
-    InitFloorDatabase db = await InitFloorDatabase.init();
+    // InitFloorDatabase db = await InitFloorDatabase.init();
     final List<CartQueryDto> cartQueryDto = await db.cartQueryDao.fetchCartQuery();
     return CartQuery.fromDtoList(cartQueryDto);
   }
@@ -31,6 +31,11 @@ class CartRepoImp extends CartRepo{
   @override
   Future<void> insertProduct(CartQueryDto params) async {
     await db.cartQueryDao.insertProduct(params);
+  }
+
+  @override
+  Future<void> updateProduct(CartQueryDto params) async {
+    await db.cartQueryDao.updateProduct(params);
   }
 
 }

@@ -6,6 +6,7 @@ class WhiteBoldText extends BaseStatelessWidget {
   final TextStyle? labelStyle;
   final Color? labelColor;
   final double? fontSize;
+  final int? maxLines;
 
   WhiteBoldText({
     Key? key,
@@ -14,6 +15,7 @@ class WhiteBoldText extends BaseStatelessWidget {
     this.labelStyle,
     this.labelColor,
     this.fontSize,
+    this.maxLines,
   }) : super(key: key);
 
   @override
@@ -21,6 +23,8 @@ class WhiteBoldText extends BaseStatelessWidget {
     return Text(
       label,
       textAlign: textAlign,
+      maxLines: maxLines,
+      overflow: TextOverflow.ellipsis,
       style: labelStyle ??
           whiteBoldStyle.copyWith(fontSize: fontSize ?? 18, color: labelColor),
     );

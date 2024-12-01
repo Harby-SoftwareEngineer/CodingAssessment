@@ -3,12 +3,13 @@ import 'package:app/core/widgets/texts/primary_texts.dart';
 import 'package:app/core/widgets/texts/white_texts.dart';
 
 import '../../../main_index.dart';
+import '../../data/models/cart_query_dto.dart';
 import '../../domain/entities/cart_query.dart';
 
 class CartItem extends BaseStatelessWidget {
   final CartQuery cartQuery;
-  final Function(CartQuery) onRemove;
-  final Function(CartQuery) onChangeQuantity;
+  final Function(CartQueryDto) onRemove;
+  final Function(CartQueryDto) onChangeQuantity;
 
   CartItem(
       {Key? key,
@@ -20,16 +21,16 @@ class CartItem extends BaseStatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: 10.paddingAll,
-      margin: basePadding,
-      decoration: Decorations.shapeDecorationShadow(
+      padding: 16.paddingAll,
+      decoration: Decorations.radiusDecoration(
         color: Color(0xFF242C3B),
+        radius: 0,
       ),
       child: Row(
         children: [
           image(),
           10.pw,
-          details(),
+          Expanded(child: details()),
         ],
       ),
     );
@@ -47,8 +48,9 @@ class CartItem extends BaseStatelessWidget {
     return Column(
       children: [
         Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            title(),
+            Flexible(child: title()),
             removeButton(),
           ],
         ),
@@ -64,13 +66,13 @@ class CartItem extends BaseStatelessWidget {
   }
 
   Widget title() {
-    return WhiteBoldText(label: cartQuery.title ?? '', fontSize: 15);
+    return WhiteBoldText(label: cartQuery.title ?? '', fontSize: 15, maxLines: 2);
   }
 
   Widget removeButton() {
     return IconButton(
       icon: Icon(Icons.delete, color: errorColor),
-      onPressed: () => onRemove(cartQuery),
+      onPressed: () => onRemove(CartQuery.toDto(cartQuery)),
     );
   }
 
@@ -79,28 +81,32 @@ class CartItem extends BaseStatelessWidget {
         label: '\$${cartQuery.price.toString()}', fontSize: 14);
   }
 
-  StreamStateInitial<int> get quantityStream =>
-      StreamStateInitial<int>();
+
+  int quantity = 1;
 
   Widget counters() {
+    quantity = cartQuery.quantity ?? 1;
     return Row(
       children: [
         AppIconButton(
           icon: AppIcons.add,
+          padding: 10.paddingAll,
           onPressed: () {
-            onChangeQuantity(cartQuery);
+            quantity++;
+            cartQuery.quantity = quantity;
+            onChangeQuantity(CartQuery.toDto(cartQuery));
           },
         ),
-        StreamBuilder<int>(
-            stream: quantityStream.stream,
-            initialData: cartQuery.id,
-            builder: (context, snapshot) {
-              return PrimaryRegularText(
-                  label: snapshot.data.toString(), fontSize: 14);
-            }),
+        PrimaryRegularText(
+            label: cartQuery.quantity.toString(), fontSize: 14),
         AppIconButton(
           icon: AppIcons.minus,
-          onPressed: () => onChangeQuantity(cartQuery),
+          padding: 10.paddingAll,
+          onPressed: () {
+            quantity--;
+            cartQuery.quantity = quantity;
+            onChangeQuantity(CartQuery.toDto(cartQuery));
+          },
         ),
       ],
     );

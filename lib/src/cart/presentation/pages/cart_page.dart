@@ -1,4 +1,3 @@
-
 import 'package:app/core/resources/data_state.dart';
 import 'package:app/src/cart/data/models/cart_query_dto.dart';
 
@@ -9,8 +8,7 @@ import '../../domain/entities/cart_query.dart';
 import '../bloc/cart_bloc.dart';
 import 'cart_screen.dart';
 
-class CartPage extends BaseBlocWidget<
-    DataSuccess<List<CartQuery>>, CartCubit> {
+class CartPage extends BaseBlocWidget<DataSuccess<List<CartQuery>>, CartCubit> {
   CartPage({Key? key}) : super(key: key);
 
   @override
@@ -19,13 +17,24 @@ class CartPage extends BaseBlocWidget<
   }
 
   @override
-  Widget buildWidget(
-      BuildContext context, DataSuccess<List<CartQuery>> state) {
-    return ProductsScreen(data: state.data!);
+  Widget buildWidget(BuildContext context, DataSuccess<List<CartQuery>> state) {
+    return ProductsScreen(
+        data: state.data!,
+        onRemove: (cartQuery) {
+          bloc.removeProduct(cartQuery);
+        },
+        onChangeQuantity: (cartQuery) {
+          bloc.updateProduct(cartQuery);
+        });
   }
 
   @override
   String? title(BuildContext context) {
     return 'My Shopping Cart';
+  }
+
+  @override
+  void onSuccessDismissed() {
+    bloc.fetchProducts();
   }
 }

@@ -85,7 +85,7 @@ class _$InitFloorDatabase extends InitFloorDatabase {
       },
       onCreate: (database, version) async {
         await database.execute(
-            'CREATE TABLE IF NOT EXISTS `CartQueryDto` (`id` INTEGER, `title` TEXT, `price` INTEGER, `image` TEXT, PRIMARY KEY (`id`))');
+            'CREATE TABLE IF NOT EXISTS `CartQueryDto` (`id` INTEGER, `title` TEXT, `price` INTEGER, `quantity` INTEGER, `image` TEXT, PRIMARY KEY (`id`))');
 
         await callback?.onCreate?.call(database, version);
       },
@@ -111,6 +111,18 @@ class _$CartQueryDao extends CartQueryDao {
                   'id': item.id,
                   'title': item.title,
                   'price': item.price,
+                  'quantity': item.quantity,
+                  'image': item.image
+                }),
+        _cartQueryDtoUpdateAdapter = UpdateAdapter(
+            database,
+            'CartQueryDto',
+            ['id'],
+            (CartQueryDto item) => <String, Object?>{
+                  'id': item.id,
+                  'title': item.title,
+                  'price': item.price,
+                  'quantity': item.quantity,
                   'image': item.image
                 }),
         _cartQueryDtoDeletionAdapter = DeletionAdapter(
@@ -121,6 +133,7 @@ class _$CartQueryDao extends CartQueryDao {
                   'id': item.id,
                   'title': item.title,
                   'price': item.price,
+                  'quantity': item.quantity,
                   'image': item.image
                 });
 
@@ -132,6 +145,8 @@ class _$CartQueryDao extends CartQueryDao {
 
   final InsertionAdapter<CartQueryDto> _cartQueryDtoInsertionAdapter;
 
+  final UpdateAdapter<CartQueryDto> _cartQueryDtoUpdateAdapter;
+
   final DeletionAdapter<CartQueryDto> _cartQueryDtoDeletionAdapter;
 
   @override
@@ -141,6 +156,7 @@ class _$CartQueryDao extends CartQueryDao {
             id: row['id'] as int?,
             title: row['title'] as String?,
             price: row['price'] as int?,
+            quantity: row['quantity'] as int?,
             image: row['image'] as String?));
   }
 
@@ -153,6 +169,11 @@ class _$CartQueryDao extends CartQueryDao {
   Future<void> insertProduct(CartQueryDto params) async {
     await _cartQueryDtoInsertionAdapter.insert(
         params, OnConflictStrategy.abort);
+  }
+
+  @override
+  Future<void> updateProduct(CartQueryDto params) async {
+    await _cartQueryDtoUpdateAdapter.update(params, OnConflictStrategy.abort);
   }
 
   @override

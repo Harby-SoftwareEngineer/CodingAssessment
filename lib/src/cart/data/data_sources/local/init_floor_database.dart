@@ -15,8 +15,8 @@ abstract class InitFloorDatabase extends FloorDatabase {
 
   static Future<InitFloorDatabase> init () async {
     final database = await $FloorInitFloorDatabase.databaseBuilder('CartQueryDto.db').build();
+
     print('Database initialized');
-    print(database.cartQueryDao.fetchCartQuery());
     return database;
   }
 }
