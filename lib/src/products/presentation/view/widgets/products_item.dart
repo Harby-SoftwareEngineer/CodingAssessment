@@ -79,13 +79,13 @@ class ProductItem extends BaseStatelessWidget {
       children: [
         10.ph,
         HintMediumText(
-          label: item.title ?? '',
+          label: item.category?.name ?? '',
           fontSize: 13,
           maxLines: 2,
         ),
         5.ph,
         BlackBoldText(
-          label: item.category?.name ?? 'SMITH - Trade',
+          label: item.title ?? '',
           labelStyle: whiteBoldStyle.copyWith(fontSize: 13),
         ),
         5.ph,

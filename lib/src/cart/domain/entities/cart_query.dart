@@ -36,6 +36,6 @@ class CartQuery {
   }
 
   static total (List<CartQuery> cartQuery, double deliveryFee, double discount){
-    return subTotal(cartQuery) + deliveryFee - discount;
+    return subTotal(cartQuery) + deliveryFee - (subTotal(cartQuery) / discount);
   }
 }

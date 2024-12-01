@@ -28,6 +28,7 @@ class ProductsScreen extends BaseStatelessWidget {
     return Expanded(
       child: ListView.separated(
         itemCount: data.length,
+        padding: 0.paddingAll,
         itemBuilder: (context, index) {
           return CartItem(
             cartQuery: data[index],
@@ -69,7 +70,7 @@ class ProductsScreen extends BaseStatelessWidget {
               ),
               label(
                 label: 'Total',
-                value: '\$${CartQuery.total(data,0,0)}',
+                value: '\$${CartQuery.total(data,0,10)}',
               ),
             ],
           ),
