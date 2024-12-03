@@ -1,7 +1,7 @@
 import 'package:injectable/injectable.dart';
 
 import '../../../../../core/exceptions/api_exception.dart';
-import '../../../../cart/data/data_sources/local/init_floor_database.dart';
+import '../../../../cart/data/data_sources/local/cart_database.dart';
 import '../../../../cart/data/models/cart_query_dto.dart';
 import '../../../../cart/domain/repositories/cart_repo.dart';
 import '../../../../main_index.dart';

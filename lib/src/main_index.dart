@@ -25,4 +25,4 @@ export 'package:app/core/widgets/texts/column_texts.dart';
 export 'package:app/core/widgets/buttons/primary_button.dart';
 export 'package:app/core/assets/app_images.dart';
 export 'package:flutter/services.dart';
-export 'package:flutter/foundation.dart';
+export 'package:flutter/foundation.dart' hide Category;

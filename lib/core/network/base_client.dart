@@ -61,19 +61,8 @@ class HeaderInterceptor extends Interceptor {
 
     if (err.response != null) {
       Map<String, dynamic> data = json.decode(err.response.toString());
-      String message = data.containsKey('status') ? data['message']['detailedResponseCode'] : "Error";
-      // final status = data.containsKey('status') ? data['status'] : "Error";
+      String message = data.containsKey('error') ? data['error']['message'] : "Something went wrong";
       int code = data.containsKey('code') ? data['code'] : 0;
-      if (err.response?.statusCode == 403 || err.response?.statusCode == 401) {
-        // HelperMethods.clearCashData();
-        // pushReplacementNamed(Routes.loginPage);
-      }
-      /*throw DioError(
-        error: message,
-        response: err.response,
-        type: DioErrorType.response,
-        requestOptions: err.requestOptions,
-      );*/
       throw ApiException(message, code);
     } else {
       super.onError(err, handler);

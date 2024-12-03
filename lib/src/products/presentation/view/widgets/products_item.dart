@@ -57,7 +57,7 @@ class ProductItem extends BaseStatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       children: [
-        20.ph,
+        15.ph,
         image(),
         body(),
       ],
@@ -73,27 +73,32 @@ class ProductItem extends BaseStatelessWidget {
     );
   }
 
-  Column body() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        10.ph,
-        HintMediumText(
-          label: item.category?.name ?? '',
-          fontSize: 13,
-          maxLines: 2,
-        ),
-        5.ph,
-        BlackBoldText(
-          label: item.title ?? '',
-          labelStyle: whiteBoldStyle.copyWith(fontSize: 13),
-        ),
-        5.ph,
-        HintMediumText(
-          label: '\$${item.price}' ?? '',
-          fontSize: 13,
-        ),
-      ],
+  Expanded body() {
+    return Expanded(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          10.ph,
+          Flexible(
+            child: HintMediumText(
+              label: item.category?.name ?? '',
+              fontSize: 13,
+              maxLines: 1,
+            ),
+          ),
+          5.ph,
+          BlackBoldText(
+            label: item.title ?? '',
+            maxLines: 2,
+            labelStyle: whiteBoldStyle.copyWith(fontSize: 13, ),
+          ),
+          5.ph,
+          HintMediumText(
+            label: '\$${item.price}' ?? '',
+            fontSize: 13,
+          ),
+        ],
+      ),
     );
   }
 }

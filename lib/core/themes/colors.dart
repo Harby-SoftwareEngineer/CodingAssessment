@@ -9,8 +9,9 @@ class AppColors {
   static const Color greenColor = Color(0xff219653);
   static const Color backgroundColor = Color(0xff242C3B);
   static const Color cardColor = Color(0xffffffff);
+  static const Color whiteText = Color(0xffffffff);
   static const Color borderColor = Color(0xffADB5C3);
-  static const Color borderTextFieldColor = Color(0xffE4E5E5);
+  static const Color borderTextFieldColor = Color(0xff9B9DA3);
   static Color greyColor = Color(0xffffffff).withOpacity(0.6);
   static const Color greyColorAC = Color(0xff9B9DAC);
   static const Color dividerColor = Color(0xffADB5C3);

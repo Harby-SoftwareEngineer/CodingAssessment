@@ -1,9 +1,12 @@
+import 'package:floor/floor.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'category_dto.g.dart';
 
+@entity
 @JsonSerializable(ignoreUnannotated: false)
 class CategoryDto {
+  @primaryKey
   @JsonKey(name: 'id')
   int? id;
   @JsonKey(name: 'name')

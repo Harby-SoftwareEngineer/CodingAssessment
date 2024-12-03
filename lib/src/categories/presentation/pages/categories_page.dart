@@ -25,6 +25,6 @@ class CategoriesPage extends BaseBlocWidget<
 
   @override
   String? title(BuildContext context) {
-    return strings.category;
+    return strings.categories;
   }
 }

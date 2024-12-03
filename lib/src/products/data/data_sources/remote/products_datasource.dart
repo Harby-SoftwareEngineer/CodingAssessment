@@ -3,7 +3,7 @@ import 'package:app/src/products/presentation/view/widgets/products_item.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/retrofit.dart';
-import '../../../../core/utils/constants.dart';
+import '../../../../../core/utils/constants.dart';
 
 part 'products_datasource.g.dart';
 @Injectable()

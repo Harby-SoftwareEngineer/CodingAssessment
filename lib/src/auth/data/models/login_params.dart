@@ -9,8 +9,10 @@ class LoginParams {
   String? email;
   @JsonKey(name: 'password')
   String? password;
+  @JsonKey(name: 'isLogin', includeToJson: false, includeFromJson: false)
+  bool isLogin;
 
-  LoginParams({this.email, this.password,});
+  LoginParams({this.email, this.password, this.isLogin = true});
 
    factory LoginParams.fromJson(Map<String, dynamic> json) => _$LoginParamsFromJson(json);
 

@@ -1,4 +1,6 @@
 
+import 'package:app/src/categories/domain/entities/category.dart';
+
 import '../../../../../core/components/base_widget_bloc.dart';
 import '../../../../main_index.dart';
 
@@ -7,32 +9,23 @@ import '../bloc/products_bloc.dart';
 import 'products_screen.dart';
 
 class ProductsPage extends BaseBlocWidget<
-    UnInitState, ProductsCubit> {
+    DataSuccess<List<Product>>, ProductsCubit> {
   ProductsPage({Key? key}) : super(key: key);
 
-  // @override
-  // void loadInitialData(BuildContext context) {
-  //   bloc.fetchProducts();
-  // }
-
-  // @override
-  // Widget build(
-  //     BuildContext context) {
-  //   return mainFrame(body: Stack(
-  //     children: [
-  //       AppIcon(icon: AppIcons.background_home)
-  //     ],
-  //   ));
-  // }
+  @override
+  void loadInitialData(BuildContext context) {
+    Category? category = getArguments(context);
+    bloc.fetchProducts(category?.id);
+  }
 
   @override
   Widget buildWidget(
-      BuildContext context, UnInitState state) {
-    return ProductsScreen(data:[]);
+      BuildContext context, DataSuccess<List<Product>> state) {
+    return ProductsScreen(data: state.data ?? []);
   }
 
   @override
   String? title(BuildContext context) {
-    return strings.notifications;
+    return strings.products;
   }
 }

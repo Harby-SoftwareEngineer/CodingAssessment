@@ -15,6 +15,8 @@ class AppIcons{
   static const String active_bg_bar = "assets/icons/active_bg_bar.svg";
   static const String add = "assets/icons/add.svg";
   static const String minus = "assets/icons/minus.svg";
+  static const String inactive_category = "assets/icons/inactive_category.svg";
+  static const String active_category = "assets/icons/active_category.svg";
 
   static const String news = "assets/icons/news.svg";
   static const String rules = "assets/icons/rules.svg";

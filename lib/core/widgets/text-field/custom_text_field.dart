@@ -2,6 +2,7 @@ import 'package:app/core/widgets/texts/primary_texts.dart';
 import 'package:app/src/main_index.dart';
 
 import '../texts/black_texts.dart';
+import '../texts/white_texts.dart';
 
 
 class CustomTextField extends BaseStatelessWidget {
@@ -42,7 +43,7 @@ class CustomTextField extends BaseStatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           if (title != null) ...[
-        BlackMediumText(label: title!, fontSize: 16),
+        WhiteMediumText(label: title!, fontSize: 16),
             8.ph],
           SizedBox(
             height: minHeight,
@@ -56,7 +57,7 @@ class CustomTextField extends BaseStatelessWidget {
                   textAlign: textAlign ?? TextAlign.start,
                   maxLines: maxLines ?? 1,
                   keyboardType: isPassword ? TextInputType.visiblePassword : keyboardType,
-                  style: enabled ? blackRegularStyle.copyWith(fontSize: 16) : hintRegularStyle.copyWith(fontSize: 16),
+                  style: enabled ? whiteRegularStyle.copyWith(fontSize: 14) : hintRegularStyle.copyWith(fontSize: 16),
                   obscureText: isVisibility,
                   controller: controller,
                   textInputAction: TextInputAction.next,
@@ -82,7 +83,7 @@ class CustomTextField extends BaseStatelessWidget {
                     IconButton(
                       icon: Icon(
                         isVisibility ? Icons.visibility_off_outlined : Icons.visibility_outlined,
-                        color: isVisibility ? hintColor : primaryColor,
+                        color: isVisibility ? hintColor : primaryColorDark,
                       ),
                       onPressed: () {
                         isVisibility = !isVisibility;

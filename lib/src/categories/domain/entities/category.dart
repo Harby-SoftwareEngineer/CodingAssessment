@@ -6,8 +6,15 @@ class Category {
   String? image;
   String? creationAt;
   String? updatedAt;
+  bool isAll;
 
-  Category({this.id, this.name, this.image, this.creationAt, this.updatedAt});
+  Category(
+      {this.id,
+      this.name,
+      this.image,
+      this.creationAt,
+      this.updatedAt,
+      this.isAll = false});
 
   factory Category.fromDto(CategoryDto json) => Category(
         id: json.id,
@@ -15,6 +22,7 @@ class Category {
         image: json.image,
         creationAt: json.creationAt,
         updatedAt: json.updatedAt,
+        isAll: false,
       );
 
   static List<Category> fromDtoList(List<CategoryDto> dto) {

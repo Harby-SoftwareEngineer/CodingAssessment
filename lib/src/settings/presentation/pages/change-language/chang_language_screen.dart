@@ -1,10 +1,8 @@
 import 'package:app/core/utils/navigator.dart';
 import 'package:app/core/widgets/buttons/outlined_button.dart';
 import 'package:app/core/widgets/images/logo.dart';
-import 'package:app/core/widgets/texts/black_texts.dart';
 import 'package:app/core/widgets/texts/hint_texts.dart';
 
-import '../../../../../core/widgets/radio/custom_radio_list.dart';
 import '../../../../../core/widgets/texts/primary_texts.dart';
 import '../../../../main_index.dart';
 import '../../bloc/locale_cubit.dart';
@@ -25,7 +23,7 @@ class ChangLanguageScreen extends BaseStatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Expanded(child: Padding(padding: 30.paddingTop, child: Logo())),
+                Expanded(child: Padding(padding: 30.paddingTop, child: const Logo())),
                 Expanded(
                   child: Container(
                     padding: 20.paddingHoriz + 30.paddingTop,

@@ -1,12 +1,13 @@
 import 'dart:io';
 
-import 'package:app/src/cart/data/data_sources/local/init_floor_database.dart';
+import 'package:app/src/cart/data/data_sources/local/cart_database.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:app/src/settings/presentation/bloc/locale_cubit.dart';
 import 'package:app/src/settings/presentation/bloc/locale_state.dart';
 import 'package:get_storage/get_storage.dart';
 
+import 'core/database/init_floor_database.dart';
 import 'core/firebase/notification_service.dart';
 import 'core/themes/light_theme.dart';
 import 'core/network/base_client.dart';
@@ -31,7 +32,6 @@ Future<void> main() async {
 
   await GetStorage.init();
   await InitFloorDatabase.init();
-  injector.registerSingleton(await InitFloorDatabase.init());
   await configureDependencies();
   ServicesLocator().init();
   injector.registerSingleton(ClientCreator(
@@ -80,7 +80,7 @@ class MyApp extends StatelessWidget {
             ],
             //  home: SplashScreen(widgetPage: LoginPage()),
             routes: Routes.routes,
-            initialRoute:  Routes.navigationPages,
+            initialRoute:  Routes.loginPage,
           );
         },
       ),

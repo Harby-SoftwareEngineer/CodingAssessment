@@ -2,12 +2,10 @@ import '../../src/auth/presentation/pages/forget-password/enter_phone_number_pag
 import '../../src/auth/presentation/pages/forget-password/enter_pin_code_page.dart';
 import '../../src/auth/presentation/pages/forget-password/forgot_password_page.dart';
  import '../../src/auth/presentation/pages/login/login_page.dart';
-import '../../src/auth/presentation/pages/register/register_page.dart';
 import '../../src/cart/presentation/pages/cart_page.dart';
 import '../../src/home/presentation/pages/home_page.dart';
 import '../../src/main_index.dart';
 import '../../src/nav_bar/presentation/pages/main_navgation_bar.dart';
- import '../../src/on_boarding/pages/onboarding_page.dart';
 import '../../src/products/presentation/details/pages/product_details_page.dart';
 import '../../src/products/presentation/view/pages/products_page.dart';
 import '../../src/profile/presentation/changePhone/pages/change_mobile_number_page.dart';
@@ -62,8 +60,6 @@ class Routes {
     productsPage: (context) => ProductsPage(),
     productDetailsPage: (context) => ProductDetailsPage(),
     cartPage: (context) => CartPage(),
-    register: (context) => RegisterPage(),
-    onBoardingPage: (context) => const OnBoardingPage(),
     enterPhoneNumberPage: (context) => EnterPhoneNumberPage(),
       loginPage: (context) => LoginPage(),
     notifications: (context) => ProductsPage(),

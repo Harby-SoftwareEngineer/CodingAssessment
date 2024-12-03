@@ -24,7 +24,7 @@ class _FirebaseAuthService implements FirebaseAuthService {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<ProfileDto> signUp(
+  Future<ProfileDto> signIn(
     LoginParams body,
     String apiKey,
   ) async {
@@ -40,7 +40,7 @@ class _FirebaseAuthService implements FirebaseAuthService {
     )
         .compose(
           _dio.options,
-          'accounts:signUp?key=${apiKey}',
+          'accounts:signInWithPassword?key=${apiKey}',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -61,7 +61,7 @@ class _FirebaseAuthService implements FirebaseAuthService {
   }
 
   @override
-  Future<ProfileDto> signIn(
+  Future<ProfileDto> signUp(
     LoginParams body,
     String apiKey,
   ) async {
@@ -77,7 +77,7 @@ class _FirebaseAuthService implements FirebaseAuthService {
     )
         .compose(
           _dio.options,
-          'accounts:signInWithPassword?key=${apiKey}',
+          'accounts:signUp?key=${apiKey}',
           queryParameters: queryParameters,
           data: _data,
         )

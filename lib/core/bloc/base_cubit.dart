@@ -59,7 +59,12 @@ abstract class BaseCubit extends Cubit<DataState> {
         emit(DataLoading());
       }
       final response = await invoke();
-      onSuccess(response);
+      if(response == null || response is List && response.isEmpty || response is Map && response.isEmpty || response is String && response.isEmpty){
+        print('invoke response $response');
+        throw EmptyListException();
+      } else {
+        onSuccess(response);
+      }
     } catch (e) {
       if (onError != null) {
         onError(e);

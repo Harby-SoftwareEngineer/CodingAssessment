@@ -1,27 +1,27 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'init_floor_database.dart';
+part of 'cart_database.dart';
 
 // **************************************************************************
 // FloorGenerator
 // **************************************************************************
 
 // ignore: avoid_classes_with_only_static_members
-class $FloorInitFloorDatabase {
+class $FloorCartDatabase {
   /// Creates a database builder for a persistent database.
   /// Once a database is built, you should keep a reference to it and re-use it.
-  static _$InitFloorDatabaseBuilder databaseBuilder(String name) =>
-      _$InitFloorDatabaseBuilder(name);
+  static _$CartDatabaseBuilder databaseBuilder(String name) =>
+      _$CartDatabaseBuilder(name);
 
   /// Creates a database builder for an in memory database.
   /// Information stored in an in memory database disappears when the process is killed.
   /// Once a database is built, you should keep a reference to it and re-use it.
-  static _$InitFloorDatabaseBuilder inMemoryDatabaseBuilder() =>
-      _$InitFloorDatabaseBuilder(null);
+  static _$CartDatabaseBuilder inMemoryDatabaseBuilder() =>
+      _$CartDatabaseBuilder(null);
 }
 
-class _$InitFloorDatabaseBuilder {
-  _$InitFloorDatabaseBuilder(this.name);
+class _$CartDatabaseBuilder {
+  _$CartDatabaseBuilder(this.name);
 
   final String? name;
 
@@ -30,23 +30,23 @@ class _$InitFloorDatabaseBuilder {
   Callback? _callback;
 
   /// Adds migrations to the builder.
-  _$InitFloorDatabaseBuilder addMigrations(List<Migration> migrations) {
+  _$CartDatabaseBuilder addMigrations(List<Migration> migrations) {
     _migrations.addAll(migrations);
     return this;
   }
 
   /// Adds a database [Callback] to the builder.
-  _$InitFloorDatabaseBuilder addCallback(Callback callback) {
+  _$CartDatabaseBuilder addCallback(Callback callback) {
     _callback = callback;
     return this;
   }
 
   /// Creates the database and initializes it.
-  Future<InitFloorDatabase> build() async {
+  Future<CartDatabase> build() async {
     final path = name != null
         ? await sqfliteDatabaseFactory.getDatabasePath(name!)
         : ':memory:';
-    final database = _$InitFloorDatabase();
+    final database = _$CartDatabase();
     database.database = await database.open(
       path,
       _migrations,
@@ -56,8 +56,8 @@ class _$InitFloorDatabaseBuilder {
   }
 }
 
-class _$InitFloorDatabase extends InitFloorDatabase {
-  _$InitFloorDatabase([StreamController<String>? listener]) {
+class _$CartDatabase extends CartDatabase {
+  _$CartDatabase([StreamController<String>? listener]) {
     changeListener = listener ?? StreamController<String>.broadcast();
   }
 

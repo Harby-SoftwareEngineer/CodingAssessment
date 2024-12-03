@@ -3,7 +3,7 @@ import 'package:app/core/widgets/texts/black_texts.dart';
 
 import '../../../src/main_index.dart';
 
-class SelectionButtonChip extends StatelessWidget {
+class SelectionButtonChip extends BaseStatelessWidget {
   final String? title;
   final String? initialValue;
   final List<ChipItem> types;
@@ -44,27 +44,6 @@ class SelectionButtonChip extends StatelessWidget {
               return isScrollableGrid
                   ? _buildChipsGrid(context, setState)
                   : _buildChips(context, setState);
-              // : Row(
-              //     crossAxisAlignment: CrossAxisAlignment.center,
-              //     mainAxisAlignment: MainAxisAlignment.center,
-              //     children: types
-              //         .map((item) => Expanded(
-              //               child: SelectItem(
-              //                 item: item,
-              //                 types: types,
-              //                 setState: setState,
-              //                 selectedType: selectedType ?? types.first,
-              //                 onSelected: (bool value) {
-              //                   setState(() {
-              //                     selectedType = item;
-              //                     onSelected!(value);
-              //                   });
-              //                 },
-              //                 padding: padding,
-              //               ),
-              //             ))
-              //         .toList(),
-              //   );
             },
           ),
         ],
@@ -72,11 +51,8 @@ class SelectionButtonChip extends StatelessWidget {
     );
   }
 
-  _initialValue() {
-    print('selectedType initialValue: ${initialValue}');
+  void _initialValue() {
     selectedType = types.firstWhere( (element) => element.id == initialValue, orElse: () => types.first);
-//        ?? (types.isEmpty ? null : types.first);
-    print('selectedType: ${selectedType?.id}');
   }
 
   Widget _buildChips(
@@ -145,7 +121,7 @@ class ChipItem {
   ChipItem({this.id, required this.title, this.icon});
 }
 
-class SelectItem extends StatelessWidget {
+class SelectItem extends BaseStatelessWidget {
   final ChipItem item;
   final List<ChipItem> types;
   final void Function(void Function()) setState;
@@ -154,7 +130,7 @@ class SelectItem extends StatelessWidget {
   final EdgeInsetsGeometry? padding;
   final bool isWrap;
 
-  const SelectItem(
+   SelectItem(
       {Key? key,
         required this.item,
         required this.types,
@@ -169,21 +145,18 @@ class SelectItem extends StatelessWidget {
   Widget build(BuildContext context) {
     bool isSelected = selectedType == item;
     return ChoiceChip(
-      label:  row(context, isWrap: isWrap),
-      labelStyle: context.textTheme.headlineMedium!.copyWith(
-        color: isSelected ? context.primaryColor : context.hintColor,
-        fontSize: 12,
-      ),
+      label:  text(context),
       selected: isSelected,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12),
       ),
       showCheckmark: false,
-      selectedColor: context.onSecondary,
-      // backgroundColor: isSelected ? context.dividerColor : context.cardColor,
+      selectedColor: context.primaryColor,
+      backgroundColor: context.scaffoldBackgroundColor,
       visualDensity: const VisualDensity(horizontal: -4, vertical: -4),
+      elevation: 5,
       side: BorderSide(
-        color: isSelected ? context.onSecondary : context.dividerColor,
+        color: context.onPrimary.withOpacity(0.2),
         width: 1,
       ),
       padding: padding ?? const EdgeInsets.symmetric(vertical: 18, horizontal: 5),
@@ -191,47 +164,19 @@ class SelectItem extends StatelessWidget {
     );
   }
 
-  Widget image(BuildContext context) {
-    return item.icon?.split('.').last == 'svg'
-        ? AppIcon(
-        icon: item.icon ?? '',
-        color:
-        selectedType == item ? context.cardColor : context.primaryColor)
-        : Image.network(item.icon ?? '',
-        height: 25,
-        width: 25,
-        color: selectedType == item
-            ? context.cardColor
-            : context.primaryColor);
-  }
-
   Widget text(BuildContext context) {
-    return FittedBox(
-      child: BlackMediumText(
-        label: item.title,
-        labelColor: selectedType == item ? context.primaryColor : context.hintColor,
-        fontSize: 12,
-      ),
-    );
-  }
-
-  Widget row(BuildContext context, {bool isWrap = false}) {
-    return SizedBox(
-      width: isWrap ? null : MediaQuery.of(context).size.width / 2,
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
-        mainAxisSize: (item.icon != null && item.icon!.isNotEmpty)
-            ? MainAxisSize.min
-            : MainAxisSize.max,
-        children: [
-          if (item.icon != null && item.icon!.isNotEmpty) ...[
-            image(context),
-            10.pw,
-          ],
-          text(context),
-        ],
-      ),
+    bool isSelected = selectedType == item;
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        BlackMediumText(
+          label: item.title,
+          labelColor: isSelected ? whiteRegularStyle.color : hintMediumStyle.color,
+          fontSize: 16,
+          textAlign: TextAlign.center,
+        ),
+      ],
     );
   }
 }

@@ -23,7 +23,7 @@ class ProductDetailsScreen extends BaseStatelessWidget {
         CustomSliderWidget(
           images: data.images ?? [],
         ),
-        Spacer(),
+        10.ph,
         details(context),
       ],
     );
@@ -126,27 +126,29 @@ class ProductDetailsScreen extends BaseStatelessWidget {
 
 
   Widget checkOut(BuildContext context) {
-    return LinearGradientContainer(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          PrimaryRegularText(label: data.priceString, fontSize: 24),
-          PrimaryButton(
-            width: 100,
-            title: "Add to Cart",
-            fontSize: 15,
-            onPressed: () {
-              onAddToCart(CartQueryDto(
-                id: data.id,
-                title: data.title,
-                price: data.price,
-                quantity: 1,
-                image: data.images?.first ?? "",
-              ));
-            }
-          ),
-        ],
-      ).paddingOnly(top: 20, bottom: 20, start: 30, end: 30),
+    return Expanded(
+      child: LinearGradientContainer(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            PrimaryRegularText(label: data.priceString, fontSize: 24),
+            PrimaryButton(
+              width: 100,
+              title: "Add to Cart",
+              fontSize: 15,
+              onPressed: () {
+                onAddToCart(CartQueryDto(
+                  id: data.id,
+                  title: data.title,
+                  price: data.price,
+                  quantity: 1,
+                  image: data.images?.first ?? "",
+                ));
+              }
+            ),
+          ],
+        ).paddingOnly(top: 20, bottom: 20, start: 30, end: 30),
+      ),
     );
   }
 }

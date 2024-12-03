@@ -56,44 +56,44 @@ final lightTheme = ThemeData(
     //  backgroundColor: secondaryColor,
     centerTitle: true,
   ),
-  inputDecorationTheme: const InputDecorationTheme(
+  inputDecorationTheme: InputDecorationTheme(
     filled: true,
-    fillColor: AppColors.backgroundColor,
+    fillColor: AppColors.backgroundColor.withOpacity(0.3),
     hintStyle: TextStyle(
       fontSize: 14,
       fontFamily: Fonts.regular,
-      color: AppColors.greyColorAC,
+      color: AppColors.greyColor,
     ),
-    labelStyle: TextStyle(
+    labelStyle: const TextStyle(
       fontSize: 14,
       fontFamily: Fonts.regular,
-      color: AppColors.greyColorAC,
+      color: AppColors.whiteText,
     ),
-    border: OutlineInputBorder(
+    border: const OutlineInputBorder(
       borderRadius: BorderRadius.all(Radius.circular(10)),
       borderSide: BorderSide(
         color: AppColors.borderTextFieldColor,
       ),
     ),
-    focusedBorder: OutlineInputBorder(
+    focusedBorder: const OutlineInputBorder(
       borderRadius: BorderRadius.all(Radius.circular(10)),
       borderSide: BorderSide(
         color: AppColors.primaryLight,
       ),
     ),
-    enabledBorder: OutlineInputBorder(
+    enabledBorder: const OutlineInputBorder(
       borderRadius: BorderRadius.all(Radius.circular(10)),
       borderSide: BorderSide(
         color: AppColors.borderTextFieldColor,
       ),
     ),
-    errorBorder: OutlineInputBorder(
+    errorBorder: const OutlineInputBorder(
       borderRadius: BorderRadius.all(Radius.circular(10)),
       borderSide: BorderSide(
         color: AppColors.errorColor,
       ),
     ),
-    disabledBorder: OutlineInputBorder(
+    disabledBorder: const OutlineInputBorder(
       borderRadius: BorderRadius.all(Radius.circular(10)),
       borderSide: BorderSide(
         color: AppColors.borderTextFieldColor,

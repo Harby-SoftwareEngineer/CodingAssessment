@@ -1,9 +1,10 @@
 
+import 'package:app/core/exceptions/extensions.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/components/base_stateless_widget.dart';
 import '../../domain/entities/category.dart';
-import '../widgets/news_item.dart';
+import '../widgets/category_item.dart';
 
 class CategoriesScreen extends BaseStatelessWidget {
   final List<Category> data;
@@ -12,8 +13,13 @@ class CategoriesScreen extends BaseStatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
+    return GridView.builder(
       itemCount: data.length,
+      padding: 0.paddingAll,
+      gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+        maxCrossAxisExtent: 150,
+        mainAxisExtent: 120,
+      ),
       itemBuilder: (context, index) {
         return CategoryItem(
           item: data[index],

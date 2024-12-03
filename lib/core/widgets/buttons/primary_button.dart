@@ -23,6 +23,7 @@ class PrimaryButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: margin,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
         gradient: const LinearGradient(
