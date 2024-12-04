@@ -40,53 +40,38 @@ class ProfileScreen extends BaseStatelessWidget {
           ),
           30.ph,
           ProfileItem(
-            icon: AppIcons.contact_us,
-            title: strings.contact_us,
-            routeName: Routes.contactUsPage,
-          ),
-          16.ph,
-          ProfileItem(
-            icon: AppIcons.mobile,
+            icon: Icons.account_circle,
             title: strings.edit_account,
-            // routeName: Routes.changeMobileNumberPage,
           ),
-          16.ph,
+          10.ph,
           ProfileItem(
-            icon: AppIcons.lock,
+            icon: Icons.contact_page,
+            title: strings.contact_us,
+          ),
+          10.ph,
+          ProfileItem(
+            icon: Icons.password,
             title: strings.change_password,
-            routeName: Routes.changePasswordSendOtpPage,
           ),
-          16.ph,
+          10.ph,
           ProfileItem(
-            icon: AppIcons.language,
+            icon: Icons.language,
             title: strings.language,
             onTap: () => ChangeLanguagePage.showChangeLanguageSheet(context),
           ),
-          20.ph,
-          const Divider(
-            color: AppColors.greysColor,
+          10.ph,
+          ProfileItem(
+            icon: Icons.info,
+            title: strings.about_us,
+          ),
+          10.ph,
+          ProfileItem(
+            icon: Icons.details,
+            title: strings.terms_conditions,
           ),
           20.ph,
-          // ListTile(
-          //   contentPadding: EdgeInsets.zero,
-          //   // visualDensity: const VisualDensity(horizontal: -4, vertical: -4),
-          //   onTap: () => pushNamed(Routes.aboutPage, arguments: AboutType.aboutUs),
-          //   title: BlackMediumText(
-          //     label: strings.about_us,
-          //     fontSize: 16,
-          //   ),
-          // ),
-          // ListTile(
-          //   contentPadding: EdgeInsets.zero,
-          //   // visualDensity: const VisualDensity(horizontal: -4, vertical: -4),
-          //   onTap: () => pushNamed(Routes.aboutPage, arguments: AboutType.terms),
-          //   title: BlackMediumText(
-          //     label: strings.terms_conditions,
-          //     fontSize: 16,
-          //   ),
-          // ),
           ProfileItem(
-            icon: AppIcons.logout,
+            icon: Icons.logout,
             iconSize: 24,
             iconColor: AppColors.errorColor,
             title: strings.sign_outs,

@@ -1,27 +1,27 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'categories_database.dart';
+part of 'products_database.dart';
 
 // **************************************************************************
 // FloorGenerator
 // **************************************************************************
 
 // ignore: avoid_classes_with_only_static_members
-class $FloorCategoriesDatabase {
+class $FloorProductsDatabase {
   /// Creates a database builder for a persistent database.
   /// Once a database is built, you should keep a reference to it and re-use it.
-  static _$CategoriesDatabaseBuilder databaseBuilder(String name) =>
-      _$CategoriesDatabaseBuilder(name);
+  static _$ProductsDatabaseBuilder databaseBuilder(String name) =>
+      _$ProductsDatabaseBuilder(name);
 
   /// Creates a database builder for an in memory database.
   /// Information stored in an in memory database disappears when the process is killed.
   /// Once a database is built, you should keep a reference to it and re-use it.
-  static _$CategoriesDatabaseBuilder inMemoryDatabaseBuilder() =>
-      _$CategoriesDatabaseBuilder(null);
+  static _$ProductsDatabaseBuilder inMemoryDatabaseBuilder() =>
+      _$ProductsDatabaseBuilder(null);
 }
 
-class _$CategoriesDatabaseBuilder {
-  _$CategoriesDatabaseBuilder(this.name);
+class _$ProductsDatabaseBuilder {
+  _$ProductsDatabaseBuilder(this.name);
 
   final String? name;
 
@@ -30,23 +30,23 @@ class _$CategoriesDatabaseBuilder {
   Callback? _callback;
 
   /// Adds migrations to the builder.
-  _$CategoriesDatabaseBuilder addMigrations(List<Migration> migrations) {
+  _$ProductsDatabaseBuilder addMigrations(List<Migration> migrations) {
     _migrations.addAll(migrations);
     return this;
   }
 
   /// Adds a database [Callback] to the builder.
-  _$CategoriesDatabaseBuilder addCallback(Callback callback) {
+  _$ProductsDatabaseBuilder addCallback(Callback callback) {
     _callback = callback;
     return this;
   }
 
   /// Creates the database and initializes it.
-  Future<CategoriesDatabase> build() async {
+  Future<ProductsDatabase> build() async {
     final path = name != null
         ? await sqfliteDatabaseFactory.getDatabasePath(name!)
         : ':memory:';
-    final database = _$CategoriesDatabase();
+    final database = _$ProductsDatabase();
     database.database = await database.open(
       path,
       _migrations,
@@ -56,12 +56,12 @@ class _$CategoriesDatabaseBuilder {
   }
 }
 
-class _$CategoriesDatabase extends CategoriesDatabase {
-  _$CategoriesDatabase([StreamController<String>? listener]) {
+class _$ProductsDatabase extends ProductsDatabase {
+  _$ProductsDatabase([StreamController<String>? listener]) {
     changeListener = listener ?? StreamController<String>.broadcast();
   }
 
-  CategoriesDao? _categoriesDaoInstance;
+  ProductsDao? _productsDaoInstance;
 
   Future<sqflite.Database> open(
     String path,
@@ -85,7 +85,7 @@ class _$CategoriesDatabase extends CategoriesDatabase {
       },
       onCreate: (database, version) async {
         await database.execute(
-            'CREATE TABLE IF NOT EXISTS `categories` (`id` INTEGER, `name` TEXT, `image` TEXT, `creationAt` TEXT, `updatedAt` TEXT, PRIMARY KEY (`id`))');
+            'CREATE TABLE IF NOT EXISTS `products` (`id` INTEGER, `title` TEXT, `price` INTEGER, `description` TEXT, `images` TEXT, `creationAt` TEXT, `updatedAt` TEXT, `category` TEXT, PRIMARY KEY (`id`))');
 
         await callback?.onCreate?.call(database, version);
       },
@@ -94,25 +94,28 @@ class _$CategoriesDatabase extends CategoriesDatabase {
   }
 
   @override
-  CategoriesDao get categoriesDao {
-    return _categoriesDaoInstance ??= _$CategoriesDao(database, changeListener);
+  ProductsDao get productsDao {
+    return _productsDaoInstance ??= _$ProductsDao(database, changeListener);
   }
 }
 
-class _$CategoriesDao extends CategoriesDao {
-  _$CategoriesDao(
+class _$ProductsDao extends ProductsDao {
+  _$ProductsDao(
     this.database,
     this.changeListener,
   )   : _queryAdapter = QueryAdapter(database),
-        _categoryDtoInsertionAdapter = InsertionAdapter(
+        _productQueryDtoInsertionAdapter = InsertionAdapter(
             database,
-            'categories',
-            (CategoryDto item) => <String, Object?>{
+            'products',
+            (ProductQueryDto item) => <String, Object?>{
                   'id': item.id,
-                  'name': item.name,
-                  'image': item.image,
+                  'title': item.title,
+                  'price': item.price,
+                  'description': item.description,
+                  'images': item.images,
                   'creationAt': item.creationAt,
-                  'updatedAt': item.updatedAt
+                  'updatedAt': item.updatedAt,
+                  'category': item.category
                 });
 
   final sqflite.DatabaseExecutor database;
@@ -121,27 +124,30 @@ class _$CategoriesDao extends CategoriesDao {
 
   final QueryAdapter _queryAdapter;
 
-  final InsertionAdapter<CategoryDto> _categoryDtoInsertionAdapter;
+  final InsertionAdapter<ProductQueryDto> _productQueryDtoInsertionAdapter;
 
   @override
-  Future<List<CategoryDto>> fetchCategories() async {
-    return _queryAdapter.queryList('SELECT * FROM categories',
-        mapper: (Map<String, Object?> row) => CategoryDto(
+  Future<List<ProductQueryDto>> fetchProducts() async {
+    return _queryAdapter.queryList('SELECT * FROM products',
+        mapper: (Map<String, Object?> row) => ProductQueryDto(
             id: row['id'] as int?,
-            name: row['name'] as String?,
-            image: row['image'] as String?,
+            title: row['title'] as String?,
+            price: row['price'] as int?,
+            description: row['description'] as String?,
+            images: row['images'] as String?,
             creationAt: row['creationAt'] as String?,
-            updatedAt: row['updatedAt'] as String?));
+            updatedAt: row['updatedAt'] as String?,
+            category: row['category'] as String?));
   }
 
   @override
   Future<void> deleteAll() async {
-    await _queryAdapter.queryNoReturn('DELETE FROM categories');
+    await _queryAdapter.queryNoReturn('DELETE FROM products');
   }
 
   @override
-  Future<void> insertCategories(List<CategoryDto> params) async {
-    await _categoryDtoInsertionAdapter.insertList(
-        params, OnConflictStrategy.replace);
+  Future<void> insertProducts(List<ProductQueryDto> params) async {
+    await _productQueryDtoInsertionAdapter.insertList(
+        params, OnConflictStrategy.abort);
   }
 }

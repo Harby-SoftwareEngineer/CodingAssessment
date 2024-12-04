@@ -17,7 +17,7 @@ class ChangLanguageWidget extends BaseStatelessWidget {
   Widget build(BuildContext context) {
     String selectedValue = 'ar';
     return BlocBuilder<LocaleCubit, LocalState>(
-        bloc: LocaleCubit()..getLanguageData(),
+        bloc: LocaleCubit()..getInitialData(),
         builder: (context, state) {
           selectedValue = context.languageCode;
           return Container(

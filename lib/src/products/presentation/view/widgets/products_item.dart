@@ -43,11 +43,21 @@ class ProductItem extends BaseStatelessWidget {
   }
 
   Align favoriteButton() {
+    bool isFavorite = false;
     return Align(
       alignment: AlignmentDirectional.topEnd,
-      child: AppIcon(
-        icon: AppIcons.favorite,
-        padding: (isFirst ? 25 : 20).paddingVert + 10.paddingHoriz ,
+      child: StatefulBuilder(
+        builder: (context, setState) {
+          return AppIconButton(
+            icon: isFavorite ? AppIcons.favorite_linear : AppIcons.favorite,
+            padding: (isFirst ? 25 : 20).paddingVert + 10.paddingHoriz,
+            onPressed: () {
+              setState(() {
+                isFavorite = !isFavorite;
+              });
+            },
+          );
+        }
       ),
     );
   }

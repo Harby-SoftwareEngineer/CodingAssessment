@@ -3,10 +3,12 @@ import 'package:json_annotation/json_annotation.dart';
 
 import '../../../categories/data/models/category_dto.dart';
 
-part 'product_dto.g.dart';
+part 'product_query_dto.g.dart';
 
+@Entity(tableName: 'products')
 @JsonSerializable(ignoreUnannotated: false)
-class ProductDto {
+class ProductQueryDto {
+  @PrimaryKey()
   @JsonKey(name: 'id')
   int? id;
   @JsonKey(name: 'title')
@@ -16,18 +18,18 @@ class ProductDto {
   @JsonKey(name: 'description')
   String? description;
   @JsonKey(name: 'images')
-  List<String>? images;
+  String? images;
   @JsonKey(name: 'creationAt')
   String? creationAt;
   @JsonKey(name: 'updatedAt')
   String? updatedAt;
   @JsonKey(name: 'category')
-  CategoryDto? category;
+  String? category;
 
-  ProductDto({this.id, this.title, this.price, this.description, this.images, this.creationAt, this.updatedAt, this.category});
+  ProductQueryDto({this.id, this.title, this.price, this.description, this.images, this.creationAt, this.updatedAt, this.category});
 
-   factory ProductDto.fromJson(Map<String, dynamic> json) => _$ProductDtoFromJson(json);
+   factory ProductQueryDto.fromJson(Map<String, dynamic> json) => _$ProductQueryDtoFromJson(json);
 
-   Map<String, dynamic> toJson() => _$ProductDtoToJson(this);
+   Map<String, dynamic> toJson() => _$ProductQueryDtoToJson(this);
 }
 

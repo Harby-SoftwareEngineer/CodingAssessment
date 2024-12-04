@@ -12,12 +12,10 @@ part 'categories_database.g.dart'; // the generated code will be there
 
 @Database(version: 1, entities: [CategoryDto])
 abstract class CategoriesDatabase extends FloorDatabase {
-  CategoriesDao get cartQueryDao;
+  CategoriesDao get categoriesDao;
 
   static Future<CategoriesDatabase> init () async {
     final database = await $FloorCategoriesDatabase.databaseBuilder('CategoriesDao.db').build();
-
-    print('Database initialized');
     return database;
   }
 }

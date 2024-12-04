@@ -154,24 +154,19 @@ class HelperMethods {
   }
 
   static Future<void> saveProfile(ProfileDto dto) async {
-    // try {
-    //   if (dto.token != null && dto.token!.isNotEmpty) {
-    //     box.write('profile', dto.toJson());
-    //   } else {
-    //     dto.token = await getToken();
-    //     box.write('profile', dto.toJson());
-    //   }
-    // } on Exception catch (e) {
-    //   print('e $e');
-    //   rethrow;
-    // }
+    try {
+      box.write('profile', dto.toJson());
+    } catch (e) {
+      print('e $e');
+      rethrow;
+    }
   }
 
   static Future<void> saveToken(String token) async {
     try {
       SharedPreferences prefs = await SharedPreferences.getInstance();
       prefs.setString('token', token);
-    } on Exception catch (e) {
+    } catch (e) {
       print('e $e');
       rethrow;
     }
@@ -181,7 +176,7 @@ class HelperMethods {
     try {
 
       final data = box.read('profile');
-      ProfileDto profile = ProfileDto.fromJson(data);
+      ProfileDto profile = ProfileDto.fromJson(data ?? {});
       print('profile $profile');
       // final decoded = jsonDecode(profile);
       // print('decoded $decoded');
@@ -218,12 +213,12 @@ class HelperMethods {
   }
 
   static Future<String> getToken() async {
-    // try {
-    //   ProfileDto profile = await getProfile();
-    //   return profile.token ?? '';
-    // } on Exception catch (e) {
+    try {
+      ProfileDto profile = await getProfile();
+      return profile.idToken ?? '';
+    } on Exception catch (e) {
       return '';
-    // }
+    }
   }
 
   // is login

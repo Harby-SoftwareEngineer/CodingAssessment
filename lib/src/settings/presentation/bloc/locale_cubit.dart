@@ -7,7 +7,7 @@ import 'locale_state.dart';
 
 class LocaleCubit extends Cubit<LocalState> {
   LocaleCubit() : super(LocalState()) {
-    getLanguageData();
+    getInitialData();
   }
 
   String lang = 'en';
@@ -18,12 +18,11 @@ class LocaleCubit extends Cubit<LocalState> {
     emit(LocalState(language: lang,isLoading: false));
   }
 
-  Future getLanguageData() async {
+  Future getInitialData() async {
     emit(LocalState(isLoading: true));
       final String language = await HelperMethods.getLanguage();
       lang = language;
-      // bool isLogin = await HelperMethods.isLogin();
-      // bool isFirstTime = await HelperMethods.isFirstTime();
-      emit(LocalState(language: language, isLoading: false));
+      bool isLogin = await HelperMethods.isLogin();
+      emit(LocalState(language: language, isLoading: false, isLogin: isLogin));
    }
 }

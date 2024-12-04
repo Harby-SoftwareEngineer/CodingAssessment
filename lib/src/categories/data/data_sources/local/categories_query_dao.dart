@@ -5,13 +5,14 @@ import '../../models/category_dto.dart';
 
 @dao
 abstract class CategoriesDao {
-  @Query('SELECT * FROM CategoriesDao')
-  Future<List<CategoryDto>> fetchCartQuery();
+  @Query('SELECT * FROM categories')
+  Future<List<CategoryDto>> fetchCategories();
 
   @insert
-  Future<void> insertProduct(List<CategoryDto> params);
+  Future<void> insertCategories(List<CategoryDto> params);
 
-  @Query('DELETE FROM CartQueryDto')
+  @Query('DELETE FROM categories')
+  @OnConflictStrategy.replace
   Future<void> deleteAll();
 }
 

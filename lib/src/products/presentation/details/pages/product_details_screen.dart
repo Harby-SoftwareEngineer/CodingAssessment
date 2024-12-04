@@ -30,38 +30,41 @@ class ProductDetailsScreen extends BaseStatelessWidget {
   }
 
   Widget details(BuildContext context) {
-    return Container(
-      decoration: const BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(20),
-          topRight: Radius.circular(20),
+    return Expanded(
+      child: Container(
+        decoration: const BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(20),
+            topRight: Radius.circular(20),
+          ),
+          gradient: LinearGradient(
+            begin: AlignmentDirectional.topStart,
+            end: AlignmentDirectional.bottomEnd,
+            colors: [
+              Color(0xFF353F54),
+              Color(0xFF222834),
+            ],
+          ),
         ),
-        gradient: LinearGradient(
-          begin: AlignmentDirectional.topStart,
-          end: AlignmentDirectional.bottomEnd,
-          colors: [
-            Color(0xFF353F54),
-            Color(0xFF222834),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                rowButtons(context),
+                10.ph,
+                title(context),
+                10.ph,
+                description(context),
+              ],
+            ).paddingAll(20),
+
+            checkOut(context),
           ],
         ),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              rowButtons(context),
-              10.ph,
-              title(context),
-              10.ph,
-              description(context),
-            ],
-          ).paddingAll(20),
-          checkOut(context),
-        ],
       ),
     );
   }
@@ -126,29 +129,27 @@ class ProductDetailsScreen extends BaseStatelessWidget {
 
 
   Widget checkOut(BuildContext context) {
-    return Expanded(
-      child: LinearGradientContainer(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            PrimaryRegularText(label: data.priceString, fontSize: 24),
-            PrimaryButton(
-              width: 100,
-              title: "Add to Cart",
-              fontSize: 15,
-              onPressed: () {
-                onAddToCart(CartQueryDto(
-                  id: data.id,
-                  title: data.title,
-                  price: data.price,
-                  quantity: 1,
-                  image: data.images?.first ?? "",
-                ));
-              }
-            ),
-          ],
-        ).paddingOnly(top: 20, bottom: 20, start: 30, end: 30),
-      ),
+    return LinearGradientContainer(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          PrimaryRegularText(label: data.priceString, fontSize: 24),
+          PrimaryButton(
+            width: 100,
+            title: "Add to Cart",
+            fontSize: 15,
+            onPressed: () {
+              onAddToCart(CartQueryDto(
+                id: data.id,
+                title: data.title,
+                price: data.price,
+                quantity: 1,
+                image: data.images?.first ?? "",
+              ));
+            }
+          ),
+        ],
+      ).paddingOnly(top: 20, bottom: 20, start: 30, end: 30),
     );
   }
 }
