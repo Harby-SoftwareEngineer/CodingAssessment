@@ -1,6 +1,4 @@
 import 'package:app/core/widgets/texts/hint_texts.dart';
-import 'package:morphable_shape/morphable_shape.dart';
-import 'package:app/core/widgets/icons/icon_text.dart';
 import 'package:app/core/widgets/images/image_network.dart';
 
 import '../../../../../core/utils/navigator.dart';

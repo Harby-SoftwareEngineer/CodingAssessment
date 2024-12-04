@@ -1,5 +1,5 @@
 
-# **E-Commerce App**
+# **Bike App**
 
 A Flutter-based mobile application that allows users to browse products, view product details, and manage a shopping cart. The app uses Firebase Authentication for secure login and integrates with RESTful APIs to fetch product data.
 
