@@ -26,21 +26,22 @@ class LoginScreen extends BaseStatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (kDebugMode) {
-      emailController.text = 'admin@mail.com';
+      nameController.text = 'Admin';
+      emailController.text = 'admin@gmail.com';
       passwordController.text = '123456';
     }
     return Form(
       key: formKey,
       child: Column(
         children: [
-          (kToolbarHeight).ph,
+          (kToolbarHeight + 20).ph,
           const Logo(),
           Expanded(
             child: SingleChildScrollView(
               padding: basePadding,
               child: Column(
                 children: [
-                  25.ph,
+                  50.ph,
                   SelectionButtonChip(
                     types: [
                       ChipItem(id: '1', title: strings.sign_in),
@@ -51,7 +52,7 @@ class LoginScreen extends BaseStatelessWidget {
                       isLoginStream.setData(isLogin);
                     },
                   ),
-                  20.ph,
+                  30.ph,
                     StreamBuilder<bool>(
                       initialData: isLogin,
                       stream: isLoginStream.stream,
