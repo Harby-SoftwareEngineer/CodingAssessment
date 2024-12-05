@@ -13,7 +13,7 @@ class ChangLanguageScreen extends BaseStatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String selectedValue = 'ar';
+    String selectedValue = context.languageCode;
     return BlocBuilder<LocaleCubit, LocalState>(
         bloc: LocaleCubit()..getInitialData(),
         builder: (context, state) {
@@ -35,9 +35,9 @@ class ChangLanguageScreen extends BaseStatelessWidget {
                         HintRegularText(label: strings.language_subtitle),
                         30.ph,
                         SecondaryButton(
-                          title: strings.arabic,
+                          title: strings.otherLanguage,
                           onPressed: () {
-                            context.read<LocaleCubit>().setLanguageData('ar');
+                            context.read<LocaleCubit>().setLanguageData(selectedValue == context.en ? context.en : context.en );
                             pushNamed(Routes.loginPage);
                           },
                         ),
@@ -45,7 +45,7 @@ class ChangLanguageScreen extends BaseStatelessWidget {
                         SecondaryButton(
                           title: strings.english,
                           onPressed: () {
-                            context.read<LocaleCubit>().setLanguageData('ar');
+                            context.read<LocaleCubit>().setLanguageData(context.en);
                             pushNamed(Routes.loginPage);
                           },
                         ),

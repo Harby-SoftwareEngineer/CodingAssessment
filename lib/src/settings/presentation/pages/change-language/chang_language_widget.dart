@@ -15,14 +15,14 @@ class ChangLanguageWidget extends BaseStatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String selectedValue = 'ar';
+    String selectedValue = context.languageCode;
     return BlocBuilder<LocaleCubit, LocalState>(
         bloc: LocaleCubit()..getInitialData(),
         builder: (context, state) {
           selectedValue = context.languageCode;
           return Container(
             padding: 20.paddingHoriz + 30.paddingVert,
-            decoration: Decorations.kDecorationTopRadius(radius: 25),
+            decoration: Decorations.kDecorationTopRadius(radius: 25, color: scaffoldBackgroundColor),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
@@ -31,21 +31,21 @@ class ChangLanguageWidget extends BaseStatelessWidget {
                 HintRegularText(label: strings.language_subtitle),
                 50.ph,
                 SecondaryButton(
-                  title: strings.arabic,
-                  backgroundColor: selectedValue == 'ar' ? primaryColor : null,
-                  textColor: selectedValue == 'ar' ? whiteTextColor : null,
+                  title: strings.otherLanguage,
+                  backgroundColor: selectedValue == context.en  ? primaryColor : null,
+                  textColor: selectedValue == context.en  ? whiteTextColor : null,
                   onPressed: () {
-                    context.read<LocaleCubit>().setLanguageData('ar');
+                    context.read<LocaleCubit>().setLanguageData(context.en );
                     pushNamed(Routes.loginPage);
                   },
                 ),
                 20.ph,
                 SecondaryButton(
                   title: strings.english,
-                  backgroundColor: selectedValue == 'en' ? primaryColor : null,
-                  textColor: selectedValue == 'en' ? whiteTextColor : null,
+                  backgroundColor: selectedValue == context.en  ? primaryColor : null,
+                  textColor: selectedValue == context.en  ? whiteTextColor : null,
                   onPressed: () {
-                    context.read<LocaleCubit>().setLanguageData('ar');
+                    context.read<LocaleCubit>().setLanguageData(context.en );
                     pushNamed(Routes.loginPage);
                   },
                 ),

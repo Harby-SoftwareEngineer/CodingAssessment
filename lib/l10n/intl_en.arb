@@ -26,7 +26,7 @@
   "orders": "Orders",
   "language_subtitle": "Choose the language you want to work in",
   "english": "English",
-  "arabic": "العربية",
+  "otherLanguage": "Other",
   "reload": "Reload",
   "something_went_wrong": "Something went wrong",
   "this_field_is_required": "This field is required",

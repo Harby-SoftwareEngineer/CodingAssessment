@@ -21,7 +21,7 @@ class ChangeLanguagePage extends BaseStatelessWidget {
       ),
       context: context,
       isScrollControlled: true,
-      backgroundColor: context.cardColor,
+      backgroundColor: context.scaffoldBackgroundColor,
       clipBehavior: Clip.antiAliasWithSaveLayer,
       builder: (BuildContext context) {
         return ChangLanguageWidget();

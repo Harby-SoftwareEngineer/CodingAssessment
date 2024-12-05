@@ -198,7 +198,6 @@ extension LocaleExtension on BuildContext {
 
   String get countryCode => locale.countryCode!;
 
-  String get ar => 'ar';
   String get en => 'en';
 }
 
