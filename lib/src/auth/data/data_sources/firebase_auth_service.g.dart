@@ -62,7 +62,7 @@ class _FirebaseAuthService implements FirebaseAuthService {
 
   @override
   Future<ProfileDto> signUp(
-    LoginParams body,
+    RegisterParams body,
     String apiKey,
   ) async {
     final _extra = <String, dynamic>{};
@@ -78,6 +78,43 @@ class _FirebaseAuthService implements FirebaseAuthService {
         .compose(
           _dio.options,
           'accounts:signUp?key=${apiKey}',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        )));
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late ProfileDto _value;
+    try {
+      _value = ProfileDto.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<ProfileDto> updateProfile(
+    UpdateProfileParams body,
+    String apiKey,
+  ) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(body.toJson());
+    final _options = _setStreamType<ProfileDto>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          'accounts:update?key=${apiKey}',
           queryParameters: queryParameters,
           data: _data,
         )

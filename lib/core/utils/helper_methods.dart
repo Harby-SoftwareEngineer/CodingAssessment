@@ -243,8 +243,12 @@ class HelperMethods {
 
   // remove token
   static Future<void> clearCashData() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.clear();
+    try {
+      box.remove('profile');
+    } catch (e) {
+      print('e $e');
+      rethrow;
+    }
   }
 
   static Future<bool> isFirstTime() async {

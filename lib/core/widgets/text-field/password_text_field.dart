@@ -24,7 +24,7 @@ class PasswordTextField extends BaseStatelessWidget {
           return strings.this_field_is_required;
         }
         if (value.length < 6) {
-          return strings.password_must;
+          return strings.password_must_be_at_least_8_characters;
         }
         return null;
       }

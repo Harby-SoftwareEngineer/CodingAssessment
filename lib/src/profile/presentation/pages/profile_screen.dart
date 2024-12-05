@@ -74,11 +74,11 @@ class ProfileScreen extends BaseStatelessWidget {
             icon: Icons.logout,
             iconSize: 24,
             iconColor: AppColors.errorColor,
-            title: strings.sign_outs,
+            title: strings.logout,
             onTap: () =>
                 onLogout(),
           ),
-          24.ph,
+          100.ph,
         ],
       ),
     );

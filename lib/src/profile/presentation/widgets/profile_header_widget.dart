@@ -26,23 +26,27 @@ class ProfileHeaderWidget extends BaseStatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          ImageNetworkCircle(
-            image: 'https://via.placeholder.com/150',
-            size: 75,
-            fit: BoxFit.fill,
-          ),
+         CircleAvatar(
+            radius: 40,
+            backgroundColor: cardColor,
+           child: Icon(
+              Icons.account_circle,
+              size: 80,
+              color: primaryColorDark,
+            ),
+         ),
           10.pw,
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               WhiteBoldText(
-                label: "Test User",
+                label: profile.displayName ?? '',
                 fontSize: 20,
               ),
               10.ph,
               Text(
-                "admin@admin.com",
+                profile.email ?? '',
                 style: hintRegularStyle.copyWith(fontSize: 14),
               ),
             ],

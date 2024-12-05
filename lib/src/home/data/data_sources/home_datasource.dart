@@ -14,6 +14,4 @@ abstract class  HomeDatasource{
   @factoryMethod
   factory HomeDatasource(Dio dio) = _HomeDatasource;
 
-  @GET('/umbraco/delivery/api/v2/content/item/$homePageDataId')
-  Future<ApiUmbracoResponse<HomeDataDto>> fetchHomeData();
 }

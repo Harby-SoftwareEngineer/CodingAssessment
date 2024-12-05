@@ -14,6 +14,10 @@ class ProfileDto {
   String? localId;
   @JsonKey(name: 'registered')
   bool? registered;
+  @JsonKey(name: 'displayName')
+  String? displayName;
+  @JsonKey(name: 'email')
+  String? email;
 
   ProfileDto({
     this.idToken,
@@ -21,6 +25,8 @@ class ProfileDto {
     this.expiresIn,
     this.localId,
     this.registered,
+    this.displayName,
+    this.email,
   });
 
   factory ProfileDto.fromJson(Map<String, dynamic> json) => _$ProfileDtoFromJson(json);

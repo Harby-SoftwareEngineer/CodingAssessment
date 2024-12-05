@@ -12,6 +12,8 @@ ProfileDto _$ProfileDtoFromJson(Map<String, dynamic> json) => ProfileDto(
       expiresIn: json['expiresIn'] as String?,
       localId: json['localId'] as String?,
       registered: json['registered'] as bool?,
+      displayName: json['displayName'] as String?,
+      email: json['email'] as String?,
     );
 
 Map<String, dynamic> _$ProfileDtoToJson(ProfileDto instance) =>
@@ -21,4 +23,6 @@ Map<String, dynamic> _$ProfileDtoToJson(ProfileDto instance) =>
       'expiresIn': instance.expiresIn,
       'localId': instance.localId,
       'registered': instance.registered,
+      'displayName': instance.displayName,
+      'email': instance.email,
     };

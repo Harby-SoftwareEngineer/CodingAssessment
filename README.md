@@ -73,12 +73,20 @@ A Flutter-based mobile application that allows users to browse products, view pr
 
 ```
 lib/
-├── main.dart             # App entry point
-├── models/               # Data models (e.g., Product, Category)
-├── screens/              # UI screens (e.g., Login, Product List, Cart)
-├── services/             # API and Firebase interaction
-├── providers/            # State management using Provider
-└── widgets/              # Reusable UI components
+├── main.dart         # Entry point of the application
+├── core/             # API services and data management
+├── l10n/             # Localization and translation files
+├── src/              # Core application modules
+│   ├── auth/         # Authentication-related logic and UI (login, signup, etc.)
+│   ├── cart/         # Shopping cart functionality and UI
+│   ├── categories/   # Category listing and management
+│   ├── home/         # Home screen and dashboard logic/UI
+│   ├── navbar/       # Navigation bar and routing
+│   ├── orders/       # Order history and management
+│   ├── products/     # Product listing and detailed view logic/UI
+│   ├── profile/      # User profile settings and information
+│   ├── settings/     # App settings and preferences
+│   └── splash/       # Splash screen and initial app setup
 ```
 
 ---

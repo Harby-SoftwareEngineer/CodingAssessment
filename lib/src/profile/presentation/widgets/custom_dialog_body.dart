@@ -31,7 +31,7 @@ class CustomDialogBody extends BaseStatelessWidget {
           ),
           PrimaryButton(
             height: 45,
-            title: title ?? strings.sign_out,
+            title: title ?? strings.logout,
             margin: 16.paddingVert,
             onPressed: onLogout,
           ),

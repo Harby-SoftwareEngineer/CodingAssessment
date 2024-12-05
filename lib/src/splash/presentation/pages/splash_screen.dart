@@ -33,18 +33,11 @@ class _SplashPageState extends State<SplashPage> with SingleTickerProviderStateM
       const Duration(seconds: 2),
       () async {
         bool isLogin = await HelperMethods.isLogin();
-        // bool isFirstTime = await HelperMethods.isFirstTime();
-        bool isRememberMe = await HelperMethods.getRememberMe();
         if ( isLogin) {
           pushNamedAndRemoveUntil(Routes.navigationPages);
         } else {
-          pushNamedAndRemoveUntil(Routes.languagePage);
+          pushNamedAndRemoveUntil(Routes.loginPage);
         }
-        // if (isLogin) {
-        //   pushNamedAndRemoveUntil(Routes.navigationPages);
-        // } else {
-        //   pushNamedAndRemoveUntil(Routes.loginPage);
-        // }
       },
     );
   }
@@ -58,7 +51,7 @@ class _SplashPageState extends State<SplashPage> with SingleTickerProviderStateM
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return AppScaffold(
       body: Center(
         child: AnimatedContainer(
             duration: const Duration(seconds: 2),
@@ -80,7 +73,7 @@ class _SplashPageState extends State<SplashPage> with SingleTickerProviderStateM
             animation: _opacityAnimation,
             builder: (context, child) {
             return Opacity(opacity: _opacityAnimation.value,
-                          child: Image.asset(AppImages.splash, fit: BoxFit.scaleDown),
+                          child: Image.asset(AppImages.logo, fit: BoxFit.scaleDown),
             );},
                         )), // Set image
       ),

@@ -42,7 +42,7 @@ class ChangePasswordScreen extends BaseStatelessWidget {
               validator: (value)=> Validation.validateConfirmPassword(value ?? '', newPasswordController.text),
             ),
             PrimaryButton(
-              title: strings.change,
+              title: strings.confirm,
               margin: 40.paddingTop,
               onPressed: () {
                 onSelectedPressed();

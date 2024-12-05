@@ -12,4 +12,4 @@ const kBaseUrl = kIsTestVersion ? kTestBaseUrl : kApiKey;
 
 const kIsTestVersion = true;
 
-const String homePageDataId = kIsTestVersion ? 'ee5be91d-f5d4-49d1-9f16-d8e2d001a164' : 'ee5be91d-f5d4-49d1-9f16-d8e2d001a164';
+const String firebaseKey = 'AIzaSyDYAuhhlRGHa8G3gciUHooBuoP4YCVj7Ag';

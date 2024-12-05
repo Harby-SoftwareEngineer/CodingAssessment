@@ -6,6 +6,9 @@ class Profile {
   String? expiresIn;
   String? localId;
   bool? registered;
+  String? displayName;
+  String? email;
+
 
   Profile({
     this.idToken,
@@ -13,6 +16,8 @@ class Profile {
     this.expiresIn,
     this.localId,
     this.registered,
+    this.displayName,
+    this.email,
   });
 
   factory Profile.fromDto(ProfileDto dto) {
@@ -22,6 +27,8 @@ class Profile {
       expiresIn: dto.expiresIn,
       localId: dto.localId,
       registered: dto.registered,
+      displayName: dto.displayName,
+      email: dto.email,
     );
   }
 }

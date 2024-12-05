@@ -2,11 +2,13 @@ import 'dart:io';
 
 import 'package:app/src/settings/presentation/bloc/locale_cubit.dart';
 import 'package:app/src/settings/presentation/bloc/locale_state.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:get_storage/get_storage.dart';
 
 import 'core/database/init_floor_database.dart';
 import 'core/themes/light_theme.dart';
 import 'core/network/base_client.dart';
+import 'firebase_options.dart';
 import 'src/main_index.dart'; // Provides [VideoController] & [Video] etc.
 
 class MyHttpOverrides extends HttpOverrides {
@@ -20,9 +22,9 @@ class MyHttpOverrides extends HttpOverrides {
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  // await Firebase.initializeApp(
-  //   options: DefaultFirebaseOptions.currentPlatform,
-  // );
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   SystemChrome.setSystemUIOverlayStyle(
       const SystemUiOverlayStyle(statusBarColor: Colors.transparent));
 
@@ -74,8 +76,7 @@ class MyApp extends StatelessWidget {
                   ],
                   //  home: SplashScreen(widgetPage: LoginPage()),
                   routes: Routes.routes,
-                  initialRoute:
-                      state.isLogin ? Routes.navigationPages : Routes.loginPage,
+                  initialRoute: Routes.splashPage,
                 );
         },
       ),

@@ -4,6 +4,7 @@ import 'package:app/core/components/base_widget_bloc.dart';
 import '../../../../../core/utils/navigator.dart';
 import '../../../../main_index.dart';
 import '../../../data/models/login_params.dart';
+import '../../../data/models/register_params.dart';
 import '../../bloc/auth_bloc.dart';
 import 'login_screen.dart';
 
@@ -18,6 +19,9 @@ class LoginPage extends BaseBlocWidget<UnInitState, AuthCubit> {
     return LoginScreen(
       onLogin: (LoginParams params) {
        bloc.login(params);
+      },
+      onRegister: (RegisterParams params) {
+        bloc.register(params);
       },
     );
   }

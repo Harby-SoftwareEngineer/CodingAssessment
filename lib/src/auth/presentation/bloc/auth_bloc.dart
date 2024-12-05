@@ -2,6 +2,7 @@ import 'package:injectable/injectable.dart';
 
 import '../../../../core/bloc/base_cubit.dart';
 import '../../data/models/login_params.dart';
+import '../../data/models/register_params.dart';
 import '../../domain/repositories/auth_repo.dart';
 
 @Injectable()
@@ -11,7 +12,11 @@ class AuthCubit extends BaseCubit {
   AuthCubit(this.repo);
 
  void login(LoginParams params) async {
-   executeSuccessState(() => params.isLogin ? repo.login(params) : repo.register(params));
+   executeSuccessState(() => repo.login(params));
+  }
+
+  void register(RegisterParams params) async {
+    executeSuccessState(() => repo.register(params));
   }
 
 }

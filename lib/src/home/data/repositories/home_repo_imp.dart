@@ -13,7 +13,6 @@ class HomeRepoImp extends HomeRepo {
 
   @override
   Future<HomeData> fetchHomeData() async {
-    final response = await datasource.fetchHomeData();
-    return HomeData.fromJson(response.properties!);
+    return HomeData();
   }
 }

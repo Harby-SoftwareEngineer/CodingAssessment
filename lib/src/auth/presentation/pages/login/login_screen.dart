@@ -1,21 +1,26 @@
 
 import 'package:app/core/widgets/images/logo.dart';
+import 'package:app/core/widgets/text-field/custom_text_field.dart';
 
 import '../../../../../core/widgets/buttons/selection_button_chip.dart';
 import '../../../../../core/widgets/text-field/email_text_field.dart';
 import '../../../../../core/widgets/text-field/password_text_field.dart';
 import '../../../../main_index.dart';
 import '../../../data/models/login_params.dart';
+import '../../../data/models/register_params.dart';
 
 class LoginScreen extends BaseStatelessWidget {
   final Function(LoginParams)? onLogin;
+  final Function(RegisterParams)? onRegister;
 
-  LoginScreen({Key? key, this.onLogin}) : super(key: key);
+  LoginScreen({Key? key, this.onLogin, this.onRegister}) : super(key: key);
 
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
+  TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  StreamStateInitial<bool> isLoginStream = StreamStateInitial();
   bool isLogin = true;
 
   @override
@@ -43,9 +48,23 @@ class LoginScreen extends BaseStatelessWidget {
                     ],
                     onSelected: (selected) {
                       isLogin = selected!.id == '1';
+                      isLoginStream.setData(isLogin);
                     },
                   ),
                   20.ph,
+                    StreamBuilder<bool>(
+                      initialData: isLogin,
+                      stream: isLoginStream.stream,
+                      builder: (context, snapshot) {
+                        return snapshot.data!
+                            ? 0.phShrink
+                            :
+                          CustomTextField(
+                            title: strings.name,
+                          controller: nameController,
+                        );
+                      }
+                    ),
                   EmailTextField(
                     controller: emailController,
                   ),
@@ -71,13 +90,23 @@ class LoginScreen extends BaseStatelessWidget {
 
   onPressed() async {
     if (formKey.currentState!.validate()) {
-      onLogin!(
-        LoginParams(
-          email: emailController.text,
-          password: passwordController.text,
-          isLogin: isLogin,
-        ),
-      );
+      if (isLogin) {
+        onLogin!(
+          LoginParams(
+            email: emailController.text,
+            password: passwordController.text,
+          ),
+        );
+        return;
+      } else {
+        onRegister!(
+          RegisterParams(
+            name: nameController.text,
+            email: emailController.text,
+            password: passwordController.text,
+          ),
+        );
+      }
     }
   }
 }

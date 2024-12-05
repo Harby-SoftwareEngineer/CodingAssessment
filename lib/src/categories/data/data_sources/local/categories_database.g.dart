@@ -142,6 +142,6 @@ class _$CategoriesDao extends CategoriesDao {
   @override
   Future<void> insertCategories(List<CategoryDto> params) async {
     await _categoryDtoInsertionAdapter.insertList(
-        params, OnConflictStrategy.replace);
+        params, OnConflictStrategy.abort);
   }
 }
